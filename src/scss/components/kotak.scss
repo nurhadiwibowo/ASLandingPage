@@ -1,0 +1,19 @@
+.kotak{
+  height: 100px;
+  width: 100%;
+  background-color: #D6E5EA;
+  padding: 0.8rem;
+
+  .kotak-title,
+  .kotak-isi
+  {
+    color: #063E56
+  }
+  .kotak-title{
+    font-size: 0.8rem;
+  }
+  .kotak-isi{
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
