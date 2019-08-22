@@ -1,0 +1,55 @@
+#usrProfile{
+  height: 140px;
+  width: 100%;
+  transition: all 1s;
+  border-bottom: 1px solid lightgrey;
+
+  @media screen and (max-width: 1200px){
+    height: 110px;
+  }
+  @media screen and (max-width: 980px){
+    height: 90px;
+  }
+  @media screen and (max-width: 768px){
+    height: 80px;
+  }
+  @media screen and (max-width: 480px){
+  }
+}
+.photo-wrapper{
+  @include size(80px);
+  transition: ease all 1s;
+
+  @media screen and (max-width: 1200px){
+  }
+  @media screen and (max-width: 980px){
+    @include size(70px);
+  }
+  @media screen and (max-width: 768px){
+    @include size(60px);
+  }
+  @media screen and (max-width: 480px){
+  }
+  .photo-profile{
+    border-radius: 100%;
+  }
+}
+.name-wrapper{
+  margin: 0 0 0 12px;
+  transition: all 1s;
+  @media screen and (max-width: 1200px){
+  }
+  @media screen and (max-width: 980px){
+    font-size: 0.8rem;
+  }
+  @media screen and (max-width: 768px){
+  }
+  @media screen and (max-width: 480px){
+    font-size: 0.7rem;
+  }
+  .name-profile{
+    transition: all 1s;
+    font-weight: 600;
+
+  }
+}

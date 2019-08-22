@@ -6,11 +6,11 @@
 <body>
   <div id="wrapper">
     @@include('../partials/header/header.html')
-    <div class="row">
-      <div class="col-2">
+    <div class="d-flex">
+      <div id="drawer" class="d-none d-sm-block">
         @@include('../partials/drawer/drawer.html')
       </div>
-      <div class="col-10">
+      <div id="content" class="">
         @@include('../partials/content/index.html')
       </div>
     </div>
@@ -27,5 +27,33 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+
+    if (window.matchMedia('(max-width: 575px)').matches) {
+      $("#kotakWrapper").addClass(" px-2");
+      $("#topContent").addClass("flex-column");
+      $("#usrProfile").addClass("my-2")
+      jQuery("#usrProfile").detach().prependTo('#topContent');
+    }
+    $(window).resize(function() {
+      var width = $(window).width();
+      if (width < 576){
+        $("#kotakWrapper").addClass(" px-2");
+        $("#topContent").addClass("flex-column");
+        $("#usrProfile").addClass("my-2")
+        jQuery("#usrProfile").detach().prependTo('#topContent');
+      } else if(width > 575) {
+        jQuery("#usrProfile").detach().prependTo('#drawer')
+        $("#kotakWrapper").removeClass("px-2")
+        $("#usrProfile").addClass("px-4")
+        $("#kotakWrapper").removeClass("px-2")
+        $("#topContent").removeClass("flex-column")
+        $("#usrProfile").removeClass("my-2")
+      } else if(width < 980) {
+        $("#usrProfile").addClass("px-2").removeClass("px-4")
+      } else {
+      }
+    });
+  </script>
 </body>
 </html>

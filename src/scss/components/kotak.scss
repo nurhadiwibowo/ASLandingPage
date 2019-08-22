@@ -1,19 +1,55 @@
 .kotak{
-  height: 100px;
+  height: 140px;
   width: 100%;
   background-color: #D6E5EA;
   padding: 0.8rem;
+  transition: all 1s;
 
-  .kotak-title,
-  .kotak-isi
-  {
-    color: #063E56
+  @media screen and (max-width: 1200px){
+    height: 110px;
   }
-  .kotak-title{
+  @media screen and (max-width: 980px){
+    height: 90px;
+  }
+  @media screen and (max-width: 768px){
+    height: 80px;
+  }
+  @media screen and (max-width: 480px){
+    height: 40px;
+  }
+  
+  
+  .kotak-isi{
+    font-size: 2rem;  
+    @media screen and (max-width: 1200px){
+    }
+    @media screen and (max-width: 980px){
+      font-size: 1.75rem;
+    }
+    @media screen and (max-width: 768px){
+      font-size: 1.5rem; 
+    }
+    @media screen and (max-width: 480px){
+      font-size: 1rem;
+    }
+  }
+}
+.kotak-title,
+.kotak-isi{
+  color: #063E56;
+  
+}
+.kotak-title{
+  font-size: 1rem;
+  margin-bottom: 8px;
+  @media screen and (max-width: 1200px){
+  }
+  @media screen and (max-width: 980px){
     font-size: 0.8rem;
   }
-  .kotak-isi{
-    font-size: 2rem;
-    font-weight: 600;
+  @media screen and (max-width: 768px){
+  }
+  @media screen and (max-width: 480px){
+    font-size: 0.7rem;
   }
 }

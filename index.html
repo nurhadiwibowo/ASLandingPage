@@ -15,50 +15,54 @@
     <div class="header d-flex justify-content-center">
       <img class="img-header" src="https://images.glints.com/unsafe/1024x0/glints-dashboard.s3.amazonaws.com/company-logo/4139f1f2a3fac0c301123c2e20a72bcf.png"/>
     </div>
-    <div class="row">
-      <div class="col-2">
+    <div class="d-flex">
+      <div id="drawer" class="d-none d-sm-block">
         <div class="drawer">
-          <div>
-            <div class="photo-wrapper">
+          <div id="usrProfile" class="d-flex px-4 align-items-center">
+            <div class="photo-wrapper d-flex">
               <img class="photo-profile" src="https://appworksinc.com/wp-content/uploads/2013/05/Team-Member-3.jpg"/>
             </div>
-            <div class="name-wrapper">
+            <div class="name-wrapper d-flex  align-middle flex-column justify-content-center">
               <span class="name-profile">John Doe</span>
               <label class="status-profile">Verified Account</label>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-10">
+      <div id="content" class="">
         <div class="content-wrapper">
-          <div class="content-wrapper__top d-flex">
-            <div class="w-100">
-              <div class="d-none d-sm-block">
-                <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
-                  <span class="kotak-title">TOTAL GALLERY</span>
-                  <span class="kotak-isi">55</span>
+          <div id="topContent" class="content-wrapper__top d-flex">
+            <div id="kotakWrapper" class="w-100 d-flex">
+              <div class="w-100">
+                <div class="d-none d-sm-block">
+                  <div class="kotak d-flex flex-column justify-content-center align-items-center">
+                    <span class="kotak-title font-weight-light">TOTAL GALLERY</span>
+                    <span class="kotak-isi font-weight-bold">55</span>
+                  </div>
+                </div>
+                <div class="d-block d-sm-none mx-1">
+                  <span class="kotak-title font-weight-light">TOTAL GALLERY</span>
+                  <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
+                    <span class="kotak-isi font-weight-bold">55</span>
+                  </div>
                 </div>
               </div>
-              <div class="d-block d-sm-none">
-                <span class="kotak-title">TOTAL GALLERY</span>
-                <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
-                  <span class="kotak-isi">55</span>
+
+              <div class="w-100">
+                <div class="d-none d-sm-block">
+                  <div class="kotak d-flex flex-column justify-content-center align-items-center">
+                    <span class="kotak-title font-weight-light">CURRENT DATE</span>
+                    <span class="kotak-isi font-weight-bold">30 July 2019</span>
+                  </div>
+                </div>
+                <div class="d-block d-sm-none mx-1">
+                  <span class="kotak-title font-weight-light">CURRENT DATE</span>
+                  <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
+                    <span class="kotak-isi font-weight-bold">30 July 2019</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="w-100">
-              <div class="d-none d-sm-block">
-                <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
-                  <span class="kotak-title">CURRENT DATE</span>
-                  <span class="kotak-isi">30 July 2019</span>
-                </div>
-              </div>
-              <div class="d-block d-sm-none">
-                <span class="kotak-title">CURRENT DATE</span>
-                <div class="kotak d-flex flex-column p-2 justify-content-center align-items-center">
-                  <span class="kotak-isi">30 July 2019</span>
-                </div>
-              </div>
+
             </div>
           </div>
           <div class="content-wrapper__bottom">
@@ -76,5 +80,33 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script>
+
+    if (window.matchMedia('(max-width: 575px)').matches) {
+      $("#kotakWrapper").addClass(" px-2");
+      $("#topContent").addClass("flex-column");
+      $("#usrProfile").addClass("my-2")
+      jQuery("#usrProfile").detach().prependTo('#topContent');
+    }
+    $(window).resize(function() {
+      var width = $(window).width();
+      if (width < 576){
+        $("#kotakWrapper").addClass(" px-2");
+        $("#topContent").addClass("flex-column");
+        $("#usrProfile").addClass("my-2")
+        jQuery("#usrProfile").detach().prependTo('#topContent');
+      } else if(width > 575) {
+        jQuery("#usrProfile").detach().prependTo('#drawer')
+        $("#kotakWrapper").removeClass("px-2")
+        $("#usrProfile").addClass("px-4")
+        $("#kotakWrapper").removeClass("px-2")
+        $("#topContent").removeClass("flex-column")
+        $("#usrProfile").removeClass("my-2")
+      } else if(width < 980) {
+        $("#usrProfile").addClass("px-2").removeClass("px-4")
+      } else {
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,13 +1,15 @@
 <div class="content-wrapper">
-  <div class="content-wrapper__top d-flex">
-    @@include('../partials/components/kotak.html',{
-      "title": "TOTAL GALLERY",
-      "isi": "55"
-    })
-    @@include('../partials/components/kotak.html',{
-      "title": "CURRENT DATE",
-      "isi": "30 July 2019"
-    })
+  <div id="topContent" class="content-wrapper__top d-flex">
+    <div id="kotakWrapper" class="w-100 d-flex">
+      @@include('../partials/components/kotak.html',{
+        "title": "TOTAL GALLERY",
+        "isi": "55"
+      })
+      @@include('../partials/components/kotak.html',{
+        "title": "CURRENT DATE",
+        "isi": "30 July 2019"
+      })
+    </div>
   </div>
   <div class="content-wrapper__bottom">
     
