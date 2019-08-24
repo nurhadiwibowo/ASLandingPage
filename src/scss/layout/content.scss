@@ -1,15 +1,15 @@
 
 .content-wrapper {
-  transition: all 1s;
+  transition: all 0.5s;
   #btn-mode {
     border-top: 1px solid #D6E5EA;
     border-bottom: 1px solid #D6E5EA;
-    transition: all 1s;
+    transition: all 0.5s;
     .btn-active {
-      transition: all 1s;
+      transition: all 0.5s;
       border: 1px solid #013C50;
       > i {
-        transition: all 1s;
+        transition: all 0.5s;
         color: #013C50;
         font-size: 1.5rem
       }
@@ -18,13 +18,13 @@
       margin: 0 8px;
     }
     > button {
-      transition: all 1s;
+      transition: all 0.5s;
       background-color: transparent;
       border: 1px solid #D6E5EA;
       padding: 4px 4px 2px 4px;
       border-radius: 5px;
       > i {
-        transition: all 1s;
+        transition: all 0.5s;
         color: #D6E5EA;
         font-size: 1.2rem;
       }

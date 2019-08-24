@@ -7,7 +7,7 @@
   <div id="wrapper">
     @@include('../partials/header/header.html')
     <div class="d-flex">
-      <div id="drawer" class="d-none d-sm-block">
+      <div class="d-none d-sm-block">
         @@include('../partials/drawer/drawer.html')
       </div>
       <div id="content" class="">
@@ -28,17 +28,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script>
-   
+    
     jQuery("#single-img").on("click", function(){
       jQuery("#single-img").addClass("btn-active")
       jQuery("#tiles-img").removeClass("btn-active")
       jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
+      jQuery(".name-mobile").removeClass("d-block").addClass("d-none")
     })
 
     jQuery("#tiles-img").on("click", function(){
       jQuery("#tiles-img").addClass("btn-active")
       jQuery("#single-img").removeClass("btn-active")
       jQuery(".article-data").removeClass("full-img").addClass("tiles-img")
+      jQuery(".name-mobile").removeClass("d-none").addClass("d-block")
     })
 
     jQuery(window).on('load', function(){
@@ -51,7 +53,9 @@
 
           payload.slice(0,20).map(data => {
             dataTemp +=`<div class="d-flex article-data bottom-content">
+                          <div class="gradient-img"></div>
                           <img class="data-img" src=${data.url}/>
+                          <span class="name-mobile d-none d-sm-none">${data.title}</span>
                           <div class="d-none d-sm-block p-3">
                             <div class="d-flex flex-column bottom-content__article">
                               <h6>${data.title}</h6>
@@ -65,12 +69,14 @@
           $(document).ready(function(){
             if (window.matchMedia('(max-width: 575px)').matches) {
               jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
+
               $("#kotakWrapper").addClass(" px-2");
               $("#topContent").addClass("flex-column");
               $("#usrProfile").addClass("my-2")
               jQuery("#content-data").removeClass("flex-column");
               jQuery("#content-data").removeClass("mt-4");
               jQuery("#usrProfile").detach().prependTo('#topContent');
+              jQuery("#list-drawer").detach().prependTo('#wrapper');
             }
             $(window).resize(function() {
               var width = $(window).width();
@@ -84,18 +90,15 @@
               } else if(width > 575) {
                 jQuery("#single-img").addClass("btn-active")
                 jQuery("#tiles-img").removeClass("btn-active")  
+                jQuery("#kotakWrapper").removeClass(" px-2");
                 jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
                 jQuery("#content-data").addClass("mt-4");
                 jQuery("#usrProfile").detach().prependTo('#drawer')
-                jQuery("#kotakWrapper").removeClass("px-2")
-                jQuery("#usrProfile").addClass("px-4")
-                jQuery("#kotakWrapper").removeClass("px-2")
+                jQuery("#list-drawer").detach().appendTo('#drawer');
                 jQuery("#topContent").removeClass("flex-column")
                 jQuery("#usrProfile").removeClass("my-2")
                 jQuery("#content-data").addClass("flex-column");      
-              } else if(width < 980) {
-                jQuery("#usrProfile").addClass("px-2").removeClass("px-4")
-              }  else {
+              } else {
               }
             });
           })

@@ -1,7 +1,8 @@
 #usrProfile{
   height: 100px;
   width: 100%;
-  transition: all 1s;
+  padding: 1rem;
+  transition: all 0.5s;
   border-bottom: 1px solid lightgrey;
 
   @media screen and (max-width: 1200px){
@@ -9,17 +10,19 @@
   }
   @media screen and (max-width: 980px){
     height: 80px;
+    padding: 0.25rem;
   }
   @media screen and (max-width: 768px){
     height: 65px;
   }
   @media screen and (max-width: 575px){
-    border-bottom: 0
+    border-bottom: 0;
+    padding: 1rem;
   }
 }
 .photo-wrapper{
   @include size(80px);
-  transition: ease all 1s;
+  transition: ease all 0.5s;
 
   @media screen and (max-width: 1200px){
   }
@@ -29,7 +32,8 @@
   @media screen and (max-width: 768px){
     @include size(40px);
   }
-  @media screen and (max-width: 480px){
+  @media screen and (max-width: 575px){
+    @include size(60px);
   }
   .photo-profile{
     border-radius: 100%;
@@ -37,7 +41,7 @@
 }
 .name-wrapper{
   margin: 0 0 0 12px;
-  transition: all 1s;
+  transition: all 0.5s;
   @media screen and (max-width: 1200px){
   }
   @media screen and (max-width: 980px){
@@ -45,11 +49,11 @@
   }
   @media screen and (max-width: 768px){
   }
-  @media screen and (max-width: 480px){
-    font-size: 0.7rem;
+  @media screen and (max-width: 575px){
+    font-size: 0.9rem;
   }
   .name-profile{
-    transition: all 1s;
+    transition: all 0.5s;
     font-weight: 600;
   }
 }

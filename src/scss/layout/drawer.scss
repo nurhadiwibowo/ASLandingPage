@@ -1,3 +1,33 @@
 .drawer{
   min-height: 100vh;
 }
+
+#list-drawer {
+ @media screen and (max-width: 575px){
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  width:100%;   
+ }
+}
+ul {
+  padding: 0;
+  margin: 0;
+  @media screen and (max-width: 575px){
+    display: flex;
+    z-index: 2000;
+  }
+  .list-menu{
+    list-style: none;
+    border-bottom: 1px solid #D6E5EA;
+    > i {
+      margin: 14px 24px;
+      color: #063E56
+    }
+    @media screen and (max-width: 575px){
+      display: flex;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}
