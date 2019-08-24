@@ -4,7 +4,7 @@
 // Feel free with using ES6 here.
 
 import dotsEffect from './modules/dots';
-
+import fetchAPI from './modules/fetchApi'
 (($) => {
   // When DOM is ready
   $(() => {

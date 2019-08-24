@@ -1,19 +1,20 @@
 #usrProfile{
-  height: 140px;
+  height: 100px;
   width: 100%;
   transition: all 1s;
   border-bottom: 1px solid lightgrey;
 
   @media screen and (max-width: 1200px){
-    height: 110px;
-  }
-  @media screen and (max-width: 980px){
     height: 90px;
   }
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 980px){
     height: 80px;
   }
-  @media screen and (max-width: 480px){
+  @media screen and (max-width: 768px){
+    height: 65px;
+  }
+  @media screen and (max-width: 575px){
+    border-bottom: 0
   }
 }
 .photo-wrapper{
@@ -23,10 +24,10 @@
   @media screen and (max-width: 1200px){
   }
   @media screen and (max-width: 980px){
-    @include size(70px);
+    @include size(60px);
   }
   @media screen and (max-width: 768px){
-    @include size(60px);
+    @include size(40px);
   }
   @media screen and (max-width: 480px){
   }
@@ -50,6 +51,5 @@
   .name-profile{
     transition: all 1s;
     font-weight: 600;
-
   }
 }
