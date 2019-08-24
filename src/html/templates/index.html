@@ -30,7 +30,10 @@
   <script>
     
     const regexDotDotDot = (val) => {
-      return val.replace((/^(?<=(?:\S+ ){4})\S+/gm, "..."))
+     let a = val.split(" ")
+     let b = a.slice(0,2)
+     let c = b.join(" ")
+     return c+" ..."
     }
 
     jQuery("#single-img").on("click", function(){
@@ -59,7 +62,7 @@
             dataTemp +=`<div class="d-flex article-data bottom-content">
                           <div class="gradient-img"></div>
                           <img class="data-img" src=${data.url}/>
-                          <span class="name-mobile d-none d-sm-none">${()=>regexDotDotDot(data.url)}</span>
+                          <span class="name-mobile d-none d-sm-none">${regexDotDotDot(data.title)}</span>
                           <div class="d-none d-sm-block p-3">
                             <div class="d-flex flex-column bottom-content__article">
                               <h6>${data.title}</h6>

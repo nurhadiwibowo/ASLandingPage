@@ -3,21 +3,20 @@
 }
 
 #list-drawer {
- @media screen and (max-width: 575px){
-  position: fixed;
-  bottom: 0;
-  background-color: white;
-  width:100%;   
- }
+  @media screen and (max-width: 575px){
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width:100%;   
+    z-index: 9999;
+  }
 }
 ul {
   padding: 0;
   margin: 0;
-  z-index: 1000;
 
   @media screen and (max-width: 575px){
     display: flex;
-    z-index: 9999;
   }
   .list-menu{
     list-style: none;
