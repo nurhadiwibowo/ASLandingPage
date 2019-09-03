@@ -36,20 +36,29 @@
      return c+" ..."
     }
 
+    if(jQuery(".article-data").hasClass("full-img")) {
+      jQuery(".name-mobile__wrapper").removeClass("d-block") .addClass("d-none")
+    } else if(jQuery(".article-data").hasClass("tiles-img")) {
+      jQuery(".name-mobile__wrapper").removeClass("d-none").addClass("d-block")
+    }
+
     jQuery("#single-img").on("click", function(){
       jQuery("#single-img").addClass("btn-active")
       jQuery("#tiles-img").removeClass("btn-active")
-      jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
-      jQuery(".name-mobile").removeClass("d-block").addClass("d-none")
+      jQuery(".article-data").removeClass("tiles-img flex-column")
+      jQuery("#content-data").addClass("flex-column").css({"flex-wrap":"wrap"})
+      jQuery("#content-data > div").css({"height":""})
+      jQuery(".data-img").css({"height":"","width":"", "padding":""})
     })
 
     jQuery("#tiles-img").on("click", function(){
       jQuery("#tiles-img").addClass("btn-active")
       jQuery("#single-img").removeClass("btn-active")
-      jQuery(".article-data").removeClass("full-img").addClass("tiles-img")
-      jQuery(".name-mobile").removeClass("d-none").addClass("d-block")
+      jQuery(".article-data").removeClass("full-img").addClass("tiles-img flex-column")
+      jQuery("#content-data").removeClass("flex-column").css({"flex-wrap":"wrap"})
+      jQuery("#content-data > div").css({"height":"max-content"})
+      jQuery(".data-img").css({"height":"100%","width":"100%","padding":"1px"})
     })
-
     jQuery(window).on('load', function(){
     fetch('https://jsonplaceholder.typicode.com/photos')
       .then(function(response) {
@@ -60,9 +69,10 @@
 
           payload.slice(0,20).map(data => {
             dataTemp +=`<div class="d-flex article-data bottom-content">
-                          <div class="gradient-img"></div>
                           <img class="data-img" src=${data.url}/>
-                          <span class="name-mobile d-none d-sm-none">${regexDotDotDot(data.title)}</span>
+                          <div class="name-mobile__wrapper gradient-img d-none d-sm-none">
+                            <span class="name-mobile d-none d-sm-none">${regexDotDotDot(data.title)}</span>                          
+                          </div>
                           <div class="d-none d-sm-block p-3">
                             <div class="d-flex flex-column bottom-content__article">
                               <h6>${data.title}</h6>
@@ -76,35 +86,70 @@
           $(document).ready(function(){
             if (window.matchMedia('(max-width: 575px)').matches) {
               jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
-
               $("#kotakWrapper").addClass(" px-2");
               $("#topContent").addClass("flex-column");
               $("#usrProfile").addClass("my-2")
+              jQuery(".name-mobile").removeClass("d-block").addClass("d-none")
               jQuery("#content-data").removeClass("flex-column");
-              jQuery("#content-data").removeClass("mt-4");
               jQuery("#usrProfile").detach().prependTo('#topContent');
               jQuery("#list-drawer").detach().prependTo('#wrapper');
+              jQuery("#single-img").on("click", function(){
+                jQuery("#single-img").addClass("btn-active")
+                jQuery("#tiles-img").removeClass("btn-active")
+                jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
+                jQuery(".name-mobile").removeClass("d-block").addClass("d-none")
+                jQuery(".name-mobile__wrapper").removeClass("d-block").addClass("d-none")
+              })
+
+              jQuery("#tiles-img").on("click", function(){
+                jQuery("#tiles-img").addClass("btn-active")
+                jQuery("#single-img").removeClass("btn-active")
+                jQuery(".article-data").removeClass("full-img").addClass("tiles-img")
+                jQuery(".name-mobile").removeClass("d-none").addClass("d-block")
+                jQuery(".name-mobile__wrapper").removeClass("d-none").addClass("d-block")
+              })
             }
             $(window).resize(function() {
               var width = $(window).width();
               if (width < 576){
-                jQuery("#content-data").removeClass("mt-4");
+                jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
                 jQuery("#kotakWrapper").addClass(" px-2");
                 jQuery("#topContent").addClass("flex-column");
                 jQuery("#usrProfile").addClass("my-2");
                 jQuery("#content-data").removeClass("flex-column");
                 jQuery("#usrProfile").detach().prependTo('#topContent');
+                jQuery("#list-drawer").detach().prependTo('#wrapper');
+                jQuery(".name-mobile__wrapper").removeClass("d-block gradient-img").addClass("d-none")
+                jQuery("#single-img").addClass("btn-active")
+                jQuery("#tiles-img").removeClass("btn-active")
+                jQuery("#single-img").on("click", function(){
+                  jQuery("#single-img").addClass("btn-active")
+                  jQuery("#tiles-img").removeClass("btn-active")
+                  jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
+                  jQuery(".name-mobile").removeClass("d-block").addClass("d-none")
+                  jQuery(".name-mobile__wrapper").removeClass("d-block").addClass("d-none")
+                })
+                jQuery("#tiles-img").on("click", function(){
+                  jQuery("#tiles-img").addClass("btn-active")
+                  jQuery("#single-img").removeClass("btn-active")
+                  jQuery(".article-data").removeClass("full-img").addClass("tiles-img")
+                  jQuery(".name-mobile").removeClass("d-none").addClass("d-block")
+                  jQuery(".name-mobile__wrapper").removeClass("d-none").addClass("d-block")
+                })
               } else if(width > 575) {
                 jQuery("#single-img").addClass("btn-active")
                 jQuery("#tiles-img").removeClass("btn-active")  
                 jQuery("#kotakWrapper").removeClass(" px-2");
                 jQuery(".article-data").addClass("full-img").removeClass("tiles-img")
-                jQuery("#content-data").addClass("mt-4");
                 jQuery("#usrProfile").detach().prependTo('#drawer')
                 jQuery("#list-drawer").detach().appendTo('#drawer');
                 jQuery("#topContent").removeClass("flex-column")
                 jQuery("#usrProfile").removeClass("my-2")
-                jQuery("#content-data").addClass("flex-column");      
+                jQuery("#content-data").addClass("flex-column");
+                jQuery(".article-data").removeClass("tiles-img flex-column")
+                jQuery("#content-data").addClass("flex-column").css({"flex-wrap":"wrap"})
+                jQuery("#content-data > div").css({"height":""})
+                jQuery(".data-img").css({"height":"","width":"", "padding":""})
               } else {
               }
             });
